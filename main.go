@@ -39,10 +39,10 @@ func main() {
 	}
 	// 启动服务
 	go func() {
+                log.Info("Starting http server on ", addr)
 		if err := app.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Info("listen: ", err)
 		}
-		log.Info("listen: ", addr)
 	}()
 	quit := make(chan os.Signal)
 	signal.Notify(quit, os.Interrupt)
